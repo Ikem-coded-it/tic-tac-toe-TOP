@@ -23,7 +23,7 @@ body {
 
 .gameboard .cell {
     border: 2px solid black;
-    font-size: 40px;
+    font-size: 60px;
     display: flex;
     justify-content: center;
     align-items: center;

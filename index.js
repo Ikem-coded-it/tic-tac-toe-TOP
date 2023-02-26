@@ -35,35 +35,35 @@
 
         if (cell1.innerText == "X" && cell2.innerText == "X" && cell3.innerText == "X" ||
         cell1.innerText == "O" && cell2.innerText == "O" && cell3.innerText == "O" ) {
-            return resultDisplay.innerText = `${defaultPlayer.name} won!`
+            return resultDisplay.innerText = `${defaultPlayer.name} won this round`
         }
         if (cell4.innerText == "X" && cell5.innerText == "X" && cell6.innerText == "X" ||
         cell4.innerText == "O" && cell5.innerText == "O" && cell6.innerText == "O" ) {
-            return resultDisplay.innerText = `${defaultPlayer.name} won!`
+            return resultDisplay.innerText = `${defaultPlayer.name} won this round`
         }
         if (cell7.innerText == "X" && cell8.innerText == "X" && cell9.innerText == "X" ||
         cell7.innerText == "O" && cell8.innerText == "O" && cell9.innerText == "O" ) {
-            return resultDisplay.innerText = `${defaultPlayer.name} won!`
+            return resultDisplay.innerText = `${defaultPlayer.name} won this round`
         }
         if (cell1.innerText == "X" && cell4.innerText == "X" && cell7.innerText == "X" ||
         cell1.innerText == "O" && cell4.innerText == "O" && cell7.innerText == "O" ) {
-            return resultDisplay.innerText = `${defaultPlayer.name} won!`
+            return resultDisplay.innerText = `${defaultPlayer.name} won this round`
         }
         if (cell2.innerText == "X" && cell5.innerText == "X" && cell8.innerText == "X" ||
         cell2.innerText == "O" && cell5.innerText == "O" && cell8.innerText == "O" ) {
-            return resultDisplay.innerText = `${defaultPlayer.name} won!`
+            return resultDisplay.innerText = `${defaultPlayer.name} won this round`
         }
         if (cell3.innerText == "X" && cell6.innerText == "X" && cell9.innerText == "X" ||
         cell3.innerText == "O" && cell6.innerText == "O" && cell9.innerText == "O" ) {
-            return resultDisplay.innerText = `${defaultPlayer.name} won!`
+            return resultDisplay.innerText = `${defaultPlayer.name} won this round`
         }
         if (cell1.innerText == "X" && cell5.innerText == "X" && cell9.innerText == "X" ||
         cell1.innerText == "O" && cell5.innerText == "O" && cell9.innerText == "O" ) {
-            return resultDisplay.innerText = `${defaultPlayer.name} won!`
+            return resultDisplay.innerText = `${defaultPlayer.name} won this round`
         }
         if (cell3.innerText == "X" && cell5.innerText == "X" && cell7.innerText == "X" ||
         cell3.innerText == "O" && cell5.innerText == "O" && cell7.innerText == "O" ) {
-            return resultDisplay.innerText = `${defaultPlayer.name} won!`
+            return resultDisplay.innerText = `${defaultPlayer.name} won this round`
         }
         return
     }
@@ -71,8 +71,8 @@
     function keepScore(score) {
         scoreBoard.push(score)
         if (scoreBoard.length == 3) {
-            const player1Scores = scoreBoard.filter(score => score == "player 1 won!")
-            const player2Scores = scoreBoard.filter(score => score == "player 2 won!")
+            const player1Scores = scoreBoard.filter(score => score == "player 1 won this round")
+            const player2Scores = scoreBoard.filter(score => score == "player 2 won this round")
 
             if (player1Scores.length > player2Scores.length) {
                 resultDisplay.innerHTML = "<div><h3>Game Over!</h3><p>Player 1 has won the game</p></div>"
@@ -109,7 +109,7 @@
                     cell.innerText = defaultPlayer.input
                     const ifWin = checkWin()
 
-                    if (ifWin == "player 1 won!" || ifWin == "player 2 won!") {
+                    if (ifWin == "player 1 won this round" || ifWin == "player 2 won this round") {
                         keepScore(ifWin)
                         setTimeout(startOver, 3000)
                         return

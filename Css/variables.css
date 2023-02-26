@@ -1,0 +1,10 @@
+@font-face {
+    font-family: LilitaOne-Regular;
+    src: url("../Lilita_One/LilitaOne-Regular.ttf");
+}
+
+:root {
+    --main-color: #fcd34d;
+    --btn-color: #a16207;
+    --btn-hover-color: #bb7a1e;
+}

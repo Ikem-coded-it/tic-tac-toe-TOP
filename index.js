@@ -1,10 +1,12 @@
 (function gameBoard() {
     let gameBoard = []
+    let scoreBoard = []
     const player1 = {name: "player 1", input: "X"}
     const player2 = {name: "player 2", input: "O"}
     let defaultPlayer = player1
     const cells = document.querySelectorAll(".cell")
     const resultDisplay = document.querySelector(".result")
+    const restartButton = document.querySelector("button")
 
     const switchPlayer = function() {
         if (defaultPlayer == player1) {
@@ -66,26 +68,53 @@
         return
     }
 
-    const makePlay = (function() {
+    function keepScore(score) {
+        scoreBoard.push(score)
+        if (scoreBoard.length == 3) {
+            const player1Scores = scoreBoard.filter(score => score == "player 1 won!")
+            const player2Scores = scoreBoard.filter(score => score == "player 2 won!")
+
+            if (player1Scores.length > player2Scores.length) {
+                resultDisplay.innerHTML = "<div><h3>Game Over!</h3><p>Player 1 has won the game</p></div>"
+                scoreBoard = []
+            }
+            if (player2Scores.length > player1Scores.length) {
+                resultDisplay.innerHTML = "<div><h3>Game Over!</h3><p>Player 2 has won the game</p></div>"
+                scoreBoard = []
+            } 
+        }
+        return
+    }
+
+    (function restart() {
+        restartButton.addEventListener("click", () => {
+            gameBoard = []
+            scoreBoard = []
+            cells.forEach(cell => cell.innerText = '')
+            resultDisplay.innerText = ''
+        })
+    })();
+
+    (function makePlay() {
         cells.forEach(cell => {
             cell.addEventListener("click", () => {
-                for (i = 0; i <= 9; i++) {
-                    if (cell.innerText != "X" && cell.innerText != "O") {
-                        cell.innerText = defaultPlayer.input
-                        gameBoard.push(defaultPlayer.input)
-                        const ifWin = checkWin()
+                if (cell.innerText != "X" && cell.innerText != "O") {
+                    gameBoard.push(defaultPlayer.input)
+                    if (gameBoard.length == 9) {
+                        console.log(gameBoard)
+                        resultDisplay.innerText = "It's a tie!"
+                        setTimeout(startOver, 3000)
+                    } 
 
-                        if (ifWin == "player 1 won!" || ifWin == "player 2 won!") {
-                            setTimeout(startOver, 3000)
-                            return
-                        }
+                    cell.innerText = defaultPlayer.input
+                    const ifWin = checkWin()
 
-                        if (gameBoard.length == 9) {
-                            resultDisplay.innerText == "It's a tie!"
-                            startOver()
-                        } 
-                        switchPlayer()
+                    if (ifWin == "player 1 won!" || ifWin == "player 2 won!") {
+                        keepScore(ifWin)
+                        setTimeout(startOver, 3000)
+                        return
                     }
+                    switchPlayer()
                 }
             })
         })

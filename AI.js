@@ -6,7 +6,6 @@
     let defaultPlayer
     const cells = document.querySelectorAll(".cell")
     const resultDisplay = document.querySelector(".result")
-    // const restartButton = document.querySelector("button")
  
     function startOver() {
         gameBoard = []

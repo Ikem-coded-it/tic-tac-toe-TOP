@@ -6,7 +6,6 @@
     let defaultPlayer = player1
     const cells = document.querySelectorAll(".cell")
     const resultDisplay = document.querySelector(".result")
-    // const restartButton = document.querySelector("button")
 
     function switchPlayer() {
         if (defaultPlayer == player1) {

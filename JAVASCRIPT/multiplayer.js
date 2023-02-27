@@ -1,14 +1,14 @@
-(function gameBoard() {
+(function game() {
     let gameBoard = []
     let scoreBoard = []
     const player1 = {name: "player 1", input: "X"}
-    const player2 = {name: "player 2", input: "O"}
+    let player2 = {name: "player 2", input: "O"}
     let defaultPlayer = player1
     const cells = document.querySelectorAll(".cell")
     const resultDisplay = document.querySelector(".result")
-    const restartButton = document.querySelector("button")
+    // const restartButton = document.querySelector("button")
 
-    const switchPlayer = function() {
+    function switchPlayer() {
         if (defaultPlayer == player1) {
             defaultPlayer = player2
         } else {
@@ -16,13 +16,13 @@
         }
     }
 
-    const startOver = function() {
+    function startOver() {
         gameBoard = []
         cells.forEach(cell => cell.innerText = '')
         resultDisplay.innerText = ''
     }
 
-    const checkWin = function() {
+    function checkWin() {
         const cell1 = document.getElementById('1')
         const cell2 = document.getElementById("2")
         const cell3 = document.getElementById("3")
@@ -87,6 +87,7 @@
     }
 
     (function restart() {
+        const restartButton = document.querySelector("button")
         restartButton.addEventListener("click", () => {
             gameBoard = []
             scoreBoard = []
